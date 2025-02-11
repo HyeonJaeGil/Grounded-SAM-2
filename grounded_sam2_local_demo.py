@@ -14,8 +14,10 @@ from grounding_dino.groundingdino.util.inference import load_model, load_image, 
 """
 Hyper parameters
 """
-TEXT_PROMPT = "car. tire."
-IMG_PATH = "notebooks/images/truck.jpg"
+
+TEXT_PROMPT = "wooden wardrobe with closed doors . wooden wardrobe with open shelves . folded clothes . black laundry basket . white plastic laundry basket . ironing board with striped fabric cover . blue bedspread with floral pattern . stack of folded clothes . cardboard boxes"
+# IMG_PATH = "demo/custom/frame-001385.color.jpg"
+IMG_PATH = "demo/custom/frame-001988.color.jpg"
 SAM2_CHECKPOINT = "./checkpoints/sam2.1_hiera_large.pt"
 SAM2_MODEL_CONFIG = "configs/sam2.1/sam2.1_hiera_l.yaml"
 GROUNDING_DINO_CONFIG = "grounding_dino/groundingdino/config/GroundingDINO_SwinT_OGC.py"
@@ -61,6 +63,7 @@ boxes, confidences, labels = predict(
     caption=text,
     box_threshold=BOX_THRESHOLD,
     text_threshold=TEXT_THRESHOLD,
+    remove_combined=True
 )
 
 # process the box prompt for SAM 2
